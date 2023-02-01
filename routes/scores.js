@@ -13,9 +13,13 @@ res.send(allUsers)
 
 UserRouter.post("/",async(req,res)=>{
    
+   try{
     const newUser = new UserModel(req.body);
     await newUser.save();
     res.send({ msg: "Score added successfully" });
+   }catch(err){
+res.send({"msg":"something went wrong"})
+   }
   })
 
 
